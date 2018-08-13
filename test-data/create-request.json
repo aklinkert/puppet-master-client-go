@@ -1,0 +1,6 @@
+{
+  "code": "logger.info(\"Alright, Kids?\");\r\n    logger.info(`Aye Aye, ${vars.name}!`);\r\n    results.okay =  1;\r\n    results.value =  Math.random() * 6 +1;",
+  "vars": {
+    "name": "Captain"
+  }
+}

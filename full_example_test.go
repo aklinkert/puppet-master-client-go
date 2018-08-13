@@ -1,31 +1,11 @@
-# puppet-master-client-go
-
-Golang SDK for the [puppet-master.io](https://puppet-master.io) public API. Puppet-master makes the execution of website interactions
-super simple by abstracting the code execution behind a HTTP API, scheduling the job for you in a scalable
-manner. For more information please head over to the [puppet-master docs](https://docs.puppet-master.io).
-
-
-## installation
-
-```bash
-go get github.com/Scalify/puppet-master-client-go
-```
-
-## example usage
-
-````go
-
-package main
+package puppet_master
 
 import (
 	"log"
-
-	"github.com/scalify/puppet-master-client-go"
 )
 
-func main() {
-	// client, err := puppet_master.NewClient("scalify", puppet_master.ApiV1Endpoint, "8rm90NdaInYMjUZntOX3xq1KhpAOEHMON0XN7YrU0gFbjmg14ETPfe2XtXIl")
-	client, err := puppet_master.NewClient("scalify", "http://puppet-master.local/api/v1", "g8KOARADijFea9dnhmGLC8alM0tt9jPf2S5hKHo6QoB8C0WlVZDzbtx756QE")
+func Example() {
+	client, err := NewClient("test", ApiV1Endpoint, "")
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -43,7 +23,7 @@ func main() {
 		log.Printf("Job ID %v", job.UUID)
 	}
 
-	newJob := &puppet_master.JobRequest{
+	newJob := &JobRequest{
 		Code: `
 import getIp from 'shared';
 
@@ -87,6 +67,3 @@ export async function getIp(page) {
 
 	log.Printf("Done executing lifecycle of job %v", retrievedJob.UUID)
 }
-
-
-````

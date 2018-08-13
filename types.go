@@ -27,7 +27,7 @@ type PaginationMeta struct {
 
 // JobPagination holds information about the paginated jobs list.
 type JobPagination struct {
-	Data  []Job           `json:"data"`
+	Jobs  []Job           `json:"data"`
 	Links PaginationLinks `json:"links"`
 	Meta  PaginationMeta  `json:"meta"`
 }
@@ -38,6 +38,12 @@ type JobRequest struct {
 	Status  string            `json:"status"`
 	Vars    map[string]string `json:"vars"`
 	Modules map[string]string `json:"modules"`
+}
+
+// JobResponse is an api wrapper around a single job.
+type JobResponse struct {
+	Errors map[string][]string `json:"errors"`
+	Data   Job                 `json:"data"`
 }
 
 // Job represents a complete job including status, results and logs.

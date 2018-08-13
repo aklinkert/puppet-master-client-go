@@ -1,0 +1,252 @@
+{
+  "data": [
+    {
+      "uuid": "d364b2a8-a006-4a7b-8bcc-6a114b1dd5dc",
+      "status": "done",
+      "code": "logger.info(\"Alles klar, Kinder?\");\r\n    logger.info(`Aye Aye, ${vars.name}!`);\r\n    results.okay =  1;\r\n    results.value =  Math.random() * 6 +1;",
+      "vars": {
+        "name": "Master"
+      },
+      "modules": {},
+      "error": null,
+      "logs": [
+        {
+          "time": "2018-07-30T18:50:28.772Z",
+          "level": "DEBUG",
+          "message": "Setting page viewport to width 1920 / height 1080"
+        },
+        {
+          "time": "2018-07-30T18:50:28.773Z",
+          "level": "DEBUG",
+          "message": "Setting default language to en"
+        },
+        {
+          "time": "2018-07-30T18:50:28.776Z",
+          "level": "INFO",
+          "message": "Alles klar, Kinder?"
+        },
+        {
+          "time": "2018-07-30T18:50:28.776Z",
+          "level": "INFO",
+          "message": "Aye Aye, Master!"
+        },
+        {
+          "time": "2018-07-30T18:50:28.776Z",
+          "level": "INFO",
+          "message": "Code took 0ms to execute."
+        }
+      ],
+      "results": {
+        "okay": 1,
+        "value": 4.178883931604196
+      },
+      "started_at": "2018-07-30T18:50:28+00:00",
+      "finished_at": "2018-07-30T18:50:28+00:00",
+      "duration": 0,
+      "created_at": "2018-07-30T18:50:15+00:00",
+      "updated_at": "2018-07-30T18:50:25+00:00"
+    },
+    {
+      "uuid": "c78d68a4-bf4e-449d-9150-6d34e0bdaa9c",
+      "status": "done",
+      "code": "logger.info(\"Alles klar, Kinder?\");\r\n    logger.info(`Aye Aye, ${vars.name}!`);\r\n    results.okay =  1;\r\n    results.value =  Math.random() * 6 +1;",
+      "vars": {
+        "name": "Master"
+      },
+      "modules": {},
+      "error": null,
+      "logs": [
+        {
+          "time": "2018-07-30T20:18:13.747Z",
+          "level": "DEBUG",
+          "message": "Setting page viewport to width 1920 / height 1080"
+        },
+        {
+          "time": "2018-07-30T20:18:13.75Z",
+          "level": "DEBUG",
+          "message": "Setting default language to en"
+        },
+        {
+          "time": "2018-07-30T20:18:13.753Z",
+          "level": "INFO",
+          "message": "Alles klar, Kinder?"
+        },
+        {
+          "time": "2018-07-30T20:18:13.753Z",
+          "level": "INFO",
+          "message": "Aye Aye, Master!"
+        },
+        {
+          "time": "2018-07-30T20:18:13.753Z",
+          "level": "INFO",
+          "message": "Code took 0ms to execute."
+        }
+      ],
+      "results": {
+        "okay": 1,
+        "value": 1.5352520468120985
+      },
+      "started_at": "2018-07-30T20:18:13+00:00",
+      "finished_at": "2018-07-30T20:18:13+00:00",
+      "duration": 0,
+      "created_at": "2018-07-30T20:17:54+00:00",
+      "updated_at": "2018-07-30T20:18:04+00:00"
+    },
+    {
+      "uuid": "6bb49b1e-9122-4218-87a2-bfee9001ac65",
+      "status": "done",
+      "code": "logger.info(\"Alles klar, Kinder?\");\r\n    logger.info(`Aye Aye, ${vars.name}!`);\r\n    results.okay =  1;\r\n    results.value =  Math.random() * 6 +1;",
+      "vars": {
+        "name": "Master"
+      },
+      "modules": {},
+      "error": null,
+      "logs": [
+        {
+          "time": "2018-07-30T20:20:52.622Z",
+          "level": "DEBUG",
+          "message": "Setting page viewport to width 1920 / height 1080"
+        },
+        {
+          "time": "2018-07-30T20:20:52.623Z",
+          "level": "DEBUG",
+          "message": "Setting default language to en"
+        },
+        {
+          "time": "2018-07-30T20:20:52.627Z",
+          "level": "INFO",
+          "message": "Alles klar, Kinder?"
+        },
+        {
+          "time": "2018-07-30T20:20:52.627Z",
+          "level": "INFO",
+          "message": "Aye Aye, Master!"
+        },
+        {
+          "time": "2018-07-30T20:20:52.627Z",
+          "level": "INFO",
+          "message": "Code took 0ms to execute."
+        }
+      ],
+      "results": {
+        "okay": 1,
+        "value": 3.1736583868224773
+      },
+      "started_at": "2018-07-30T20:20:52+00:00",
+      "finished_at": "2018-07-30T20:20:52+00:00",
+      "duration": 0,
+      "created_at": "2018-07-30T20:20:32+00:00",
+      "updated_at": "2018-07-30T20:20:43+00:00"
+    },
+    {
+      "uuid": "58656324-be5c-4dd5-bf24-6fa3281a5038",
+      "status": "created",
+      "code": "",
+      "vars": {},
+      "modules": {},
+      "started_at": null,
+      "finished_at": null,
+      "created_at": "2018-08-04T14:26:58+00:00",
+      "updated_at": "2018-08-04T14:26:58+00:00"
+    },
+    {
+      "uuid": "ed1ee746-6a39-4148-8b3c-2b1c66444d5b",
+      "status": "created",
+      "code": "logger.info(\"Alles klar, Kinder?\");\r\n    logger.info(`Aye Aye, ${vars.name}!`);\r\n    results.okay =  1;\r\n    results.value =  Math.random() * 6 +1;",
+      "vars": {
+        "name": "Master"
+      },
+      "modules": {},
+      "started_at": null,
+      "finished_at": null,
+      "created_at": "2018-08-09T16:50:47+00:00",
+      "updated_at": "2018-08-09T16:50:47+00:00"
+    },
+    {
+      "uuid": "63fb1b42-5007-461e-b251-311ac08fef73",
+      "status": "created",
+      "code": "logger.info(\"Alright, Kids?\");\r\n    logger.info(`Aye Aye, ${vars.name}!`);\r\n    results.okay =  1;\r\n    results.value =  Math.random() * 6 +1;",
+      "vars": {
+        "name": "Captain"
+      },
+      "modules": {},
+      "started_at": null,
+      "finished_at": null,
+      "created_at": "2018-08-12T18:31:13+00:00",
+      "updated_at": "2018-08-12T18:31:13+00:00"
+    },
+    {
+      "uuid": "d505f0d0-8ad6-4468-8baa-ea8cff7697e1",
+      "status": "created",
+      "code": "logger.info(\"Alright, Kids?\");\r\n    logger.info(`Aye Aye, ${vars.name}!`);\r\n    results.okay =  1;\r\n    results.value =  Math.random() * 6 +1;",
+      "vars": {
+        "name": "Captain"
+      },
+      "modules": {},
+      "started_at": null,
+      "finished_at": null,
+      "created_at": "2018-08-13T10:37:51+00:00",
+      "updated_at": "2018-08-13T10:37:51+00:00"
+    },
+    {
+      "uuid": "d64466d3-130e-4cc7-9c2f-cd5b59a1c511",
+      "status": "created",
+      "code": "import getIp from 'shared';\n\nawait page.goto(vars.page);\nconst ip = await getIp(page);\n\nlogger.info(ip);\nresults.ip = ip;",
+      "vars": {
+        "page": "http://ifcfg.co"
+      },
+      "modules": {
+        "shared": "export async function getIp(page) {\n  const text = await page.evaluate(() => document.querySelector('body').textContent);\n  return text.split(\":\")[1];\n}"
+      },
+      "started_at": null,
+      "finished_at": null,
+      "created_at": "2018-08-13T11:21:10+00:00",
+      "updated_at": "2018-08-13T11:21:10+00:00"
+    },
+    {
+      "uuid": "73e3a9b5-81c8-4743-9a7e-e80474c1b6e3",
+      "status": "created",
+      "code": "import getIp from 'shared';\n\nawait page.goto(vars.page);\nconst ip = await getIp(page);\n\nlogger.info(ip);\nresults.ip = ip;",
+      "vars": {
+        "page": "http://ifcfg.co"
+      },
+      "modules": {
+        "shared": "export async function getIp(page) {\n  const text = await page.evaluate(() => document.querySelector('body').textContent);\n  return text.split(\":\")[1];\n}"
+      },
+      "started_at": null,
+      "finished_at": null,
+      "created_at": "2018-08-13T11:55:17+00:00",
+      "updated_at": "2018-08-13T11:55:17+00:00"
+    },
+    {
+      "uuid": "bccd59d2-5d25-4082-af04-151b26229aef",
+      "status": "created",
+      "code": "import getIp from 'shared';\n\nawait page.goto(vars.page);\nconst ip = await getIp(page);\n\nlogger.info(ip);\nresults.ip = ip;",
+      "vars": {
+        "page": "http://ifcfg.co"
+      },
+      "modules": {
+        "shared": "export async function getIp(page) {\n  const text = await page.evaluate(() => document.querySelector('body').textContent);\n  return text.split(\":\")[1];\n}"
+      },
+      "started_at": null,
+      "finished_at": null,
+      "created_at": "2018-08-13T12:17:30+00:00",
+      "updated_at": "2018-08-13T12:17:30+00:00"
+    }
+  ],
+  "links": {
+    "first": "http://puppet-master.local/api/v1/teams/scalify/jobs?page=1",
+    "last": "http://puppet-master.local/api/v1/teams/scalify/jobs?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "path": "http://puppet-master.local/api/v1/teams/scalify/jobs",
+    "per_page": 15,
+    "to": 10,
+    "total": 10
+  }
+}
