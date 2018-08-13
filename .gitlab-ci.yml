@@ -1,0 +1,46 @@
+stages:
+  - dependencies
+  - test
+
+variables:
+  CGO_ENABLED: 0
+
+before_script:
+  - mkdir -p $GOPATH/src/gitlab.com/$CI_PROJECT_NAMESPACE
+  - echo "Running in $GOPATH/src/gitlab.com/$CI_PROJECT_PATH"
+  - ln -s $CI_PROJECT_DIR/ $GOPATH/src/gitlab.com/$CI_PROJECT_PATH
+  - cd $GOPATH/src/gitlab.com/$CI_PROJECT_PATH
+  - pwd
+
+.base: &base
+  image: scalify/glide:0.13.0
+
+Get Dependencies:
+  <<: *base
+  stage: dependencies
+  artifacts:
+    paths:
+    - vendor/
+    expire_in: 1 day
+    untracked: true
+  script:
+    - glide install --strip-vendor
+
+gometalinter:
+  <<: *base
+  stage: test
+  allow_failure: true
+  dependencies:
+  - Get Dependencies
+  script:
+    - go get github.com/alecthomas/gometalinter
+    - gometalinter -i
+    - gometalinter --deadline=5m --vendor --skip=proto --sort=severity ./...
+
+Test:
+  <<: *base
+  stage: test
+  dependencies:
+  - Get Dependencies
+  script:
+  - go test ./...
