@@ -5,7 +5,7 @@ import (
 )
 
 func Example() {
-	client, err := NewClient("test", ApiV1Endpoint, "")
+	client, err := NewClient("my-team", ApiV1Endpoint, "theapitokenigot")
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}

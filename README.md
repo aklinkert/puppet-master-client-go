@@ -14,7 +14,6 @@ go get github.com/Scalify/puppet-master-client-go
 ## example usage
 
 ````go
-
 package main
 
 import (
@@ -24,8 +23,7 @@ import (
 )
 
 func main() {
-	// client, err := puppet_master.NewClient("scalify", puppet_master.ApiV1Endpoint, "8rm90NdaInYMjUZntOX3xq1KhpAOEHMON0XN7YrU0gFbjmg14ETPfe2XtXIl")
-	client, err := puppet_master.NewClient("scalify", "http://puppet-master.local/api/v1", "g8KOARADijFea9dnhmGLC8alM0tt9jPf2S5hKHo6QoB8C0WlVZDzbtx756QE")
+	client, err := puppet_master.NewClient("my-team", puppet_master.ApiV1Endpoint, "theapitokenigot")
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -87,9 +85,20 @@ export async function getIp(page) {
 
 	log.Printf("Done executing lifecycle of job %v", retrievedJob.UUID)
 }
-
-
 ````
 
 ## License
 
+Copyright 2018 Scalify GmbH
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
