@@ -25,7 +25,7 @@ func Example() {
 
 	newJob := &JobRequest{
 		Code: `
-import getIp from 'shared';
+import {getIp} from 'shared';
 
 await page.goto(vars.page);
 const ip = await getIp(page);
