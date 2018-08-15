@@ -1,4 +1,4 @@
-package puppet_master
+package puppetmaster
 
 import (
 	"bytes"
@@ -36,7 +36,7 @@ func TestBuildUrl(t *testing.T) {
 	}
 
 	exp := fmt.Sprintf("%s/teams/%s/jobs?per_page=100&status=test", c.endpoint, testTeamSlug)
-	res := c.client.buildUrl(p, q)
+	res := c.client.buildURL(p, q)
 
 	t.Logf("Build url %v, expected %v", res, exp)
 	if res != exp {

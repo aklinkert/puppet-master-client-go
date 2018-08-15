@@ -1,6 +1,6 @@
-package puppet_master
+package puppetmaster
 
 const (
-	// ApiV1Endpoint contains public puppet-master.io API endpoint
-	ApiV1Endpoint = "https://puppet-master.io/api/v1"
+	// APIV1Endpoint contains public puppet-master.io API endpoint
+	APIV1Endpoint = "https://puppet-master.io/api/v1"
 )

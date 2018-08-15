@@ -1,11 +1,11 @@
-package puppet_master
+package puppetmaster
 
 import (
 	"log"
 )
 
 func Example() {
-	client, err := NewClient("my-team", ApiV1Endpoint, "theapitokenigot")
+	client, err := NewClient("my-team", APIV1Endpoint, "theapitokenigot")
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}

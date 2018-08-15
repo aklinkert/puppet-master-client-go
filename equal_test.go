@@ -1,4 +1,4 @@
-package puppet_master
+package puppetmaster
 
 import (
 	"testing"

@@ -1,4 +1,4 @@
-package puppet_master
+package puppetmaster
 
 import (
 	"bytes"
@@ -14,13 +14,13 @@ import (
 const authHeader = "Authorization"
 
 var (
-	// Thrown when the apiToken given to NewClient() is empty.
-	ErrEmptyApiToken = errors.New("apiToken may not be empty")
+	// ErrEmptyAPIToken is thrown when the apiToken given to NewClient() is empty.
+	ErrEmptyAPIToken = errors.New("apiToken may not be empty")
 
-	// Thrown when the teamSlug given to NewClient() is empty.
+	// ErrEmptyTeamSlug is thrown when the teamSlug given to NewClient() is empty.
 	ErrEmptyTeamSlug = errors.New("teamSlug may not be empty")
 
-	// Thrown when given job UUID was not found by the puppet master
+	// ErrNotFound is thrown when given job UUID was not found by the puppet master
 	ErrNotFound = errors.New("job was not found by given UUID")
 )
 
@@ -35,7 +35,7 @@ type Client struct {
 func NewClient(teamSlug, baseURL, apiToken string) (*Client, error) {
 	apiToken = strings.TrimSpace(apiToken)
 	if apiToken == "" {
-		return nil, ErrEmptyApiToken
+		return nil, ErrEmptyAPIToken
 	}
 
 	teamSlug = strings.TrimSpace(teamSlug)
@@ -65,7 +65,7 @@ func (c *Client) addAuthentication(req *http.Request) {
 	req.Header.Add(authHeader, fmt.Sprintf("Bearer %s", c.apiToken))
 }
 
-func (c *Client) buildUrl(subPath string, query map[string]string) string {
+func (c *Client) buildURL(subPath string, query map[string]string) string {
 	base := *c.baseURL
 	base.Path = path.Join(base.Path, "teams", c.teamSlug, subPath)
 
@@ -104,13 +104,13 @@ func (c *Client) GetAllJobs(page, perPage uint) (*JobPagination, error) {
 
 // GetJobsByStatus lists jobs with the given status as a paginated list
 func (c *Client) GetJobsByStatus(status string, page, perPage uint) (*JobPagination, error) {
-	jobUrl := c.buildUrl("/jobs", map[string]string{
+	jobURL := c.buildURL("/jobs", map[string]string{
 		"status":   status,
 		"page":     string(page),
 		"per_page": string(perPage),
 	})
 
-	req, err := http.NewRequest(http.MethodGet, jobUrl, nil)
+	req, err := http.NewRequest(http.MethodGet, jobURL, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -136,14 +136,14 @@ func (c *Client) GetJobsByStatus(status string, page, perPage uint) (*JobPaginat
 
 // CreateJob schedules a new job for execution
 func (c *Client) CreateJob(jobRequest *JobRequest) (*Job, error) {
-	jobUrl := c.buildUrl("/jobs", map[string]string{})
+	jobURL := c.buildURL("/jobs", map[string]string{})
 
 	body, err := json.Marshal(jobRequest)
 	if err != nil {
 		return nil, err
 	}
 
-	req, err := http.NewRequest(http.MethodPost, jobUrl, bytes.NewReader(body))
+	req, err := http.NewRequest(http.MethodPost, jobURL, bytes.NewReader(body))
 	if err != nil {
 		return nil, err
 	}
@@ -173,8 +173,8 @@ func (c *Client) CreateJob(jobRequest *JobRequest) (*Job, error) {
 
 // GetJob fetches a single job
 func (c *Client) GetJob(uuid string) (*Job, error) {
-	jobUrl := c.buildUrl(fmt.Sprintf("/jobs/%v", uuid), map[string]string{})
-	req, err := http.NewRequest(http.MethodGet, jobUrl, nil)
+	jobURL := c.buildURL(fmt.Sprintf("/jobs/%v", uuid), map[string]string{})
+	req, err := http.NewRequest(http.MethodGet, jobURL, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -202,10 +202,10 @@ func (c *Client) GetJob(uuid string) (*Job, error) {
 	return &job.Data, nil
 }
 
-// GetJob fetches a single job
+// DeleteJob deletes a job
 func (c *Client) DeleteJob(uuid string) error {
-	jobUrl := c.buildUrl(fmt.Sprintf("/jobs/%v", uuid), map[string]string{})
-	req, err := http.NewRequest(http.MethodDelete, jobUrl, nil)
+	jobURL := c.buildURL(fmt.Sprintf("/jobs/%v", uuid), map[string]string{})
+	req, err := http.NewRequest(http.MethodDelete, jobURL, nil)
 	if err != nil {
 		return err
 	}
@@ -217,7 +217,9 @@ func (c *Client) DeleteJob(uuid string) error {
 		return err
 	}
 
-	defer res.Body.Close()
+	if err := res.Body.Close(); err != nil {
+		return fmt.Errorf("failed to close response body: %v", err)
+	}
 
 	if res.StatusCode != 204 {
 		if res.StatusCode == 404 {
