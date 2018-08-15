@@ -18,3 +18,15 @@ jobs:
             go get github.com/alecthomas/gometalinter
             gometalinter -i
             gometalinter --deadline=5m --vendor --skip=proto --sort=severity ./...
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          context: docker
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
