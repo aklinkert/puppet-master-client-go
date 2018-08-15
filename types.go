@@ -4,32 +4,9 @@ import (
 	"time"
 )
 
-// PaginationLinks holds information about how to retrieve more / other entities.
-type PaginationLinks struct {
-	First string `json:"first"`
-	Last  string `json:"last"`
-	Prev  string `json:"prev"`
-	Next  string `json:"next"`
-}
-
-// PaginationMeta informs about the overall pagination state. How many items there are in total, which page
-// we're currently at and which items we got.
-type PaginationMeta struct {
-	Path        string `json:"path"`
-	FirstPage   uint   `json:"first_page"`
-	CurrentPage uint   `json:"current_page"`
-	LastPage    uint   `json:"last_page"`
-	PerPage     uint   `json:"per_page"`
-	From        uint   `json:"from"`
-	To          uint   `json:"to"`
-	Total       uint   `json:"total"`
-}
-
 // JobPagination holds information about the paginated jobs list.
 type JobPagination struct {
 	Jobs  []Job           `json:"data"`
-	Links PaginationLinks `json:"links"`
-	Meta  PaginationMeta  `json:"meta"`
 }
 
 // JobRequest defines how to create a job.

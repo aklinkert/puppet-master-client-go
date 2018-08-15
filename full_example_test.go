@@ -17,8 +17,6 @@ func Example() {
 		log.Fatalf("failed to fetch jobs: %v", err)
 	}
 
-	log.Printf("Current page %d, last page %d, total %d", jobs.Meta.CurrentPage, jobs.Meta.LastPage, jobs.Meta.Total)
-
 	for _, job := range jobs.Jobs {
 		log.Printf("Job ID %v", job.UUID)
 	}

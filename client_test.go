@@ -81,10 +81,6 @@ func TestClient_GetAllJobs(t *testing.T) {
 	if len(res.Jobs) != 10 {
 		t.Errorf("Expected GetAllJobs to return 10 jobs, got %d", len(res.Jobs))
 	}
-
-	if res.Meta.Total != 10 {
-		t.Errorf("Expected GetAllJobs to a total of 10, got %d", res.Meta.Total)
-	}
 }
 
 func TestClient_GetJob(t *testing.T) {
