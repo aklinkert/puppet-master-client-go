@@ -43,8 +43,7 @@
       "started_at": "2018-07-30T18:50:28+00:00",
       "finished_at": "2018-07-30T18:50:28+00:00",
       "duration": 0,
-      "created_at": "2018-07-30T18:50:15+00:00",
-      "updated_at": "2018-07-30T18:50:25+00:00"
+      "created_at": "2018-07-30T18:50:15+00:00"
     },
     {
       "uuid": "c78d68a4-bf4e-449d-9150-6d34e0bdaa9c",
@@ -89,8 +88,7 @@
       "started_at": "2018-07-30T20:18:13+00:00",
       "finished_at": "2018-07-30T20:18:13+00:00",
       "duration": 0,
-      "created_at": "2018-07-30T20:17:54+00:00",
-      "updated_at": "2018-07-30T20:18:04+00:00"
+      "created_at": "2018-07-30T20:17:54+00:00"
     },
     {
       "uuid": "6bb49b1e-9122-4218-87a2-bfee9001ac65",
@@ -135,8 +133,7 @@
       "started_at": "2018-07-30T20:20:52+00:00",
       "finished_at": "2018-07-30T20:20:52+00:00",
       "duration": 0,
-      "created_at": "2018-07-30T20:20:32+00:00",
-      "updated_at": "2018-07-30T20:20:43+00:00"
+      "created_at": "2018-07-30T20:20:32+00:00"
     },
     {
       "uuid": "58656324-be5c-4dd5-bf24-6fa3281a5038",
@@ -146,8 +143,7 @@
       "modules": {},
       "started_at": null,
       "finished_at": null,
-      "created_at": "2018-08-04T14:26:58+00:00",
-      "updated_at": "2018-08-04T14:26:58+00:00"
+      "created_at": "2018-08-04T14:26:58+00:00"
     },
     {
       "uuid": "ed1ee746-6a39-4148-8b3c-2b1c66444d5b",
@@ -159,8 +155,7 @@
       "modules": {},
       "started_at": null,
       "finished_at": null,
-      "created_at": "2018-08-09T16:50:47+00:00",
-      "updated_at": "2018-08-09T16:50:47+00:00"
+      "created_at": "2018-08-09T16:50:47+00:00"
     },
     {
       "uuid": "63fb1b42-5007-461e-b251-311ac08fef73",
@@ -172,8 +167,7 @@
       "modules": {},
       "started_at": null,
       "finished_at": null,
-      "created_at": "2018-08-12T18:31:13+00:00",
-      "updated_at": "2018-08-12T18:31:13+00:00"
+      "created_at": "2018-08-12T18:31:13+00:00"
     },
     {
       "uuid": "d505f0d0-8ad6-4468-8baa-ea8cff7697e1",
@@ -185,8 +179,7 @@
       "modules": {},
       "started_at": null,
       "finished_at": null,
-      "created_at": "2018-08-13T10:37:51+00:00",
-      "updated_at": "2018-08-13T10:37:51+00:00"
+      "created_at": "2018-08-13T10:37:51+00:00"
     },
     {
       "uuid": "d64466d3-130e-4cc7-9c2f-cd5b59a1c511",
@@ -200,8 +193,7 @@
       },
       "started_at": null,
       "finished_at": null,
-      "created_at": "2018-08-13T11:21:10+00:00",
-      "updated_at": "2018-08-13T11:21:10+00:00"
+      "created_at": "2018-08-13T11:21:10+00:00"
     },
     {
       "uuid": "73e3a9b5-81c8-4743-9a7e-e80474c1b6e3",
@@ -215,8 +207,7 @@
       },
       "started_at": null,
       "finished_at": null,
-      "created_at": "2018-08-13T11:55:17+00:00",
-      "updated_at": "2018-08-13T11:55:17+00:00"
+      "created_at": "2018-08-13T11:55:17+00:00"
     },
     {
       "uuid": "bccd59d2-5d25-4082-af04-151b26229aef",
@@ -230,8 +221,7 @@
       },
       "started_at": null,
       "finished_at": null,
-      "created_at": "2018-08-13T12:17:30+00:00",
-      "updated_at": "2018-08-13T12:17:30+00:00"
+      "created_at": "2018-08-13T12:17:30+00:00"
     }
   ],
   "links": {

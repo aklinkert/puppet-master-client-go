@@ -6,7 +6,7 @@ import (
 
 // JobPagination holds information about the paginated jobs list.
 type JobPagination struct {
-	Jobs  []Job           `json:"data"`
+	Jobs []Job `json:"data"`
 }
 
 // JobRequest defines how to create a job.
@@ -33,6 +33,7 @@ type Job struct {
 	Error      string                 `json:"error"`
 	Logs       []Log                  `json:"logs"`
 	Results    map[string]interface{} `json:"results"`
+	CreatedAt  time.Time              `json:"created_at"`
 	StartedAt  *time.Time             `json:"started_at"`
 	FinishedAt *time.Time             `json:"finished_at"`
 	Duration   int                    `json:"duration"`
