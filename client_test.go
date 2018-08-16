@@ -71,7 +71,7 @@ func TestClient_GetAllJobs(t *testing.T) {
 	resData := readTestData(t, "get-jobs-response.json")
 	c := newTestClient(t, dumbHandler(200, bytes.NewReader(resData)))
 
-	res, err := c.client.GetAllJobs(1, 15)
+	res, err := c.client.GetJobs(1, 15)
 	if err != nil {
 		t.Fatalf("failed to list job: %v", err)
 	}

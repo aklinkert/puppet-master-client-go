@@ -97,8 +97,8 @@ func (c *Client) do(req *http.Request) (*http.Response, error) {
 	return res, err
 }
 
-// GetAllJobs returns all jobs as a paginated list
-func (c *Client) GetAllJobs(page, perPage uint) (*JobPagination, error) {
+// GetJobs returns all jobs as a paginated list
+func (c *Client) GetJobs(page, perPage uint) (*JobPagination, error) {
 	return c.GetJobsByStatus("", page, perPage)
 }
 

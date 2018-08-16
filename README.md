@@ -30,7 +30,7 @@ func main() {
 
 	client.EnableDebugLogs()
 
-	jobs, err := client.GetAllJobs(1, 100)
+	jobs, err := client.GetJobs(1, 100)
 	if err != nil {
 		log.Fatalf("failed to fetch jobs: %v", err)
 	}
