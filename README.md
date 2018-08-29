@@ -23,7 +23,7 @@ import (
 )
 
 func main() {
-	client, err := puppet_master.NewClient("my-team", puppet_master.ApiV1Endpoint, "theapitokenigot")
+	client, err := puppetmaster.NewClient("my-team", puppetmaster.ApiV1Endpoint, "theapitokenigot")
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -41,7 +41,7 @@ func main() {
 		log.Printf("Job ID %v", job.UUID)
 	}
 
-	newJob := &puppet_master.JobRequest{
+	newJob := &puppetmaster.JobRequest{
 		Code: `
 import {getIp} from 'shared';
 
