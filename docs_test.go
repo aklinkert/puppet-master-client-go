@@ -13,8 +13,6 @@ import (
 	"time"
 )
 
-var testTeamSlug = "scalify-test"
-
 type test struct {
 	client   *Client
 	apiToken string
@@ -29,7 +27,7 @@ func init() {
 func newTestClient(t *testing.T, handler http.Handler) *test {
 	apiToken := strconv.FormatUint(rand.Uint64(), 10)
 	server := httptest.NewServer(handler)
-	client, err := NewClient(testTeamSlug, server.URL, apiToken)
+	client, err := NewClient(server.URL, apiToken)
 	if err != nil {
 		t.Fatal("Failed to cvonstruct client:", err)
 	}

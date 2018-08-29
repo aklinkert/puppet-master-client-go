@@ -17,35 +17,26 @@ var (
 	// ErrEmptyAPIToken is thrown when the apiToken given to NewClient() is empty.
 	ErrEmptyAPIToken = errors.New("apiToken may not be empty")
 
-	// ErrEmptyTeamSlug is thrown when the teamSlug given to NewClient() is empty.
-	ErrEmptyTeamSlug = errors.New("teamSlug may not be empty")
-
 	// ErrNotFound is thrown when given job UUID was not found by the puppet master
 	ErrNotFound = errors.New("job was not found by given UUID")
 )
 
 // Client represents a client to interact with the puppet-master API.
 type Client struct {
-	apiToken, teamSlug string
-	baseURL            *url.URL
-	debug              bool
+	apiToken string
+	baseURL  *url.URL
+	debug    bool
 }
 
 // NewClient returns a new Client instance.
-func NewClient(teamSlug, baseURL, apiToken string) (*Client, error) {
+func NewClient(baseURL, apiToken string) (*Client, error) {
 	apiToken = strings.TrimSpace(apiToken)
 	if apiToken == "" {
 		return nil, ErrEmptyAPIToken
 	}
 
-	teamSlug = strings.TrimSpace(teamSlug)
-	if teamSlug == "" {
-		return nil, ErrEmptyTeamSlug
-	}
-
 	c := &Client{
 		apiToken: apiToken,
-		teamSlug: teamSlug,
 	}
 
 	var err error
@@ -67,7 +58,7 @@ func (c *Client) addAuthentication(req *http.Request) {
 
 func (c *Client) buildURL(subPath string, query map[string]string) string {
 	base := *c.baseURL
-	base.Path = path.Join(base.Path, "teams", c.teamSlug, subPath)
+	base.Path = path.Join(base.Path, subPath)
 
 	q := base.Query()
 	for k, v := range query {

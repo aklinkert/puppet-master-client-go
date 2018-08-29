@@ -5,7 +5,7 @@ import (
 )
 
 func Example() {
-	client, err := NewClient("my-team", APIV1Endpoint, "theapitokenigot")
+	client, err := NewClient("https://puppet-master.io/api/v1/teams/my-team", "theapitokenigot")
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}

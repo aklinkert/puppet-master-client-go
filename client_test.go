@@ -35,7 +35,7 @@ func TestBuildUrl(t *testing.T) {
 		"per_page": "100",
 	}
 
-	exp := fmt.Sprintf("%s/teams/%s/jobs?per_page=100&status=test", c.endpoint, testTeamSlug)
+	exp := fmt.Sprintf("%s/jobs?per_page=100&status=test", c.endpoint)
 	res := c.client.buildURL(p, q)
 
 	t.Logf("Build url %v, expected %v", res, exp)

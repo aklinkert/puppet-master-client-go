@@ -23,7 +23,7 @@ import (
 )
 
 func main() {
-	client, err := puppetmaster.NewClient("my-team", puppetmaster.ApiV1Endpoint, "theapitokenigot")
+	client, err := puppetmaster.NewClient("https://puppet-master.io/api/v1/teams/my-team", "theapitokenigot")
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
