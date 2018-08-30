@@ -28,7 +28,7 @@ func NewClient(baseURL, apiToken string) (*Client, error) {
 
 	c := &Client{
 		apiToken:    apiToken,
-		syncSleepMs: 100,
+		syncSleepMs: 500,
 	}
 
 	var err error
