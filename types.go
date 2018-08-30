@@ -12,7 +12,6 @@ type JobPagination struct {
 // JobRequest defines how to create a job.
 type JobRequest struct {
 	Code    string            `json:"code"`
-	Status  string            `json:"status"`
 	Vars    map[string]string `json:"vars"`
 	Modules map[string]string `json:"modules"`
 }

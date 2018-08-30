@@ -3,29 +3,20 @@ package puppetmaster
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
 	"path"
 	"strings"
-)
-
-const authHeader = "Authorization"
-
-var (
-	// ErrEmptyAPIToken is thrown when the apiToken given to NewClient() is empty.
-	ErrEmptyAPIToken = errors.New("apiToken may not be empty")
-
-	// ErrNotFound is thrown when given job UUID was not found by the puppet master
-	ErrNotFound = errors.New("job was not found by given UUID")
+	"time"
 )
 
 // Client represents a client to interact with the puppet-master API.
 type Client struct {
-	apiToken string
-	baseURL  *url.URL
-	debug    bool
+	apiToken    string
+	baseURL     *url.URL
+	debug       bool
+	syncSleepMs uint
 }
 
 // NewClient returns a new Client instance.
@@ -36,7 +27,8 @@ func NewClient(baseURL, apiToken string) (*Client, error) {
 	}
 
 	c := &Client{
-		apiToken: apiToken,
+		apiToken:    apiToken,
+		syncSleepMs: 100,
 	}
 
 	var err error
@@ -128,6 +120,17 @@ func (c *Client) GetJobsByStatus(status string, page, perPage uint) (*JobPaginat
 // CreateJob schedules a new job for execution
 func (c *Client) CreateJob(jobRequest *JobRequest) (*Job, error) {
 	jobURL := c.buildURL("/jobs", map[string]string{})
+
+	if strings.TrimSpace(jobRequest.Code) == "" {
+		return nil, ErrEmptyCode
+	}
+
+	if jobRequest.Modules == nil {
+		jobRequest.Modules = map[string]string{}
+	}
+	if jobRequest.Vars == nil {
+		jobRequest.Vars = map[string]string{}
+	}
 
 	body, err := json.Marshal(jobRequest)
 	if err != nil {
@@ -221,4 +224,33 @@ func (c *Client) DeleteJob(uuid string) error {
 	}
 
 	return nil
+}
+
+// SetSyncSleepMs sets the amount of ms to sleep between two checks for the job being done
+func (c *Client) SetSyncSleepMs(syncSleepMs uint) {
+	c.syncSleepMs = syncSleepMs
+}
+
+// ExecuteSync executes a job synchronously by checking the job status in a changeable interval, 100ms by default.
+// The amount of time is changeable by calling Client.SetSyncSleepMs(). Since the job is done even when an error occurred
+// we can assure to return the finished job at some point in time.
+func (c *Client) ExecuteSync(jobRequest *JobRequest) (*Job, error) {
+	job, err := c.CreateJob(jobRequest)
+
+	if err != nil {
+		return nil, err
+	}
+
+	for {
+		job, err = c.GetJob(job.UUID)
+		if err != nil {
+			return nil, err
+		}
+
+		if job.Status == StatusDone {
+			return job, nil
+		}
+
+		time.Sleep(time.Duration(c.syncSleepMs) * time.Millisecond)
+	}
 }
