@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.10
+      - image: circleci/golang:1.12
     working_directory: /go/src/github.com/Scalify/puppet-master-client-go
 
     steps:
@@ -15,9 +15,8 @@ jobs:
       - run:
           name: gometalinter
           command: |
-            go get github.com/alecthomas/gometalinter
-            gometalinter -i
-            gometalinter --deadline=5m --vendor --skip=proto --sort=severity ./...
+            curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v1.16.0
+            golangci-lint run
 
 workflows:
   version: 2

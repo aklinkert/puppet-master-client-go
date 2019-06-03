@@ -13,7 +13,7 @@ before_script:
   - pwd
 
 .base: &base
-  image: scalify/glide:0.13.0
+  image: scalify/glide:0.13.2
 
 Get Dependencies:
   <<: *base
@@ -33,9 +33,8 @@ gometalinter:
   dependencies:
   - Get Dependencies
   script:
-    - go get github.com/alecthomas/gometalinter
-    - gometalinter -i
-    - gometalinter --deadline=5m --vendor --skip=proto --sort=severity ./...
+    - "curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v1.16.0"
+    - golangci-lint run
 
 Test:
   <<: *base
