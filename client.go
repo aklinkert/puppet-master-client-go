@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"path"
@@ -17,7 +18,6 @@ type Client struct {
 	baseURL     *url.URL
 	debug       bool
 	syncSleepMs uint
-	retries     uint
 }
 
 // NewClient returns a new Client instance.
@@ -30,7 +30,6 @@ func NewClient(baseURL, apiToken string) (*Client, error) {
 	c := &Client{
 		apiToken:    apiToken,
 		syncSleepMs: 500,
-		retries:     5,
 	}
 
 	var err error
@@ -39,11 +38,6 @@ func NewClient(baseURL, apiToken string) (*Client, error) {
 	}
 
 	return c, nil
-}
-
-// SetRetries sets the retry count for a HTTP requests
-func (c *Client) SetRetries(retries uint) {
-	c.retries = retries
 }
 
 // EnableDebugLogs enables debug logging of requests and responses.
@@ -78,25 +72,16 @@ func (c *Client) do(req *http.Request) (*http.Response, error) {
 		dumpRequest(req)
 	}
 
-	try := 0
-	for {
-		try++
-
-		res, err := http.DefaultClient.Do(req)
-		if err != nil {
-			if try == 5 {
-				return res, err
-			}
-
-			continue
-		}
-
-		if c.debug {
-			dumpResponse(res)
-		}
-
-		return res, err
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("failed to execute http call: %v", err)
 	}
+
+	if c.debug {
+		dumpResponse(res)
+	}
+
+	return res, nil
 }
 
 // GetJobs returns all jobs as a paginated list
@@ -263,6 +248,10 @@ func (c *Client) ExecuteSync(jobRequest *JobRequest) (*Job, error) {
 	for {
 		job, err = c.GetJob(job.UUID)
 		if err != nil {
+			if err == io.EOF {
+				continue
+			}
+
 			return nil, err
 		}
 
