@@ -74,7 +74,7 @@ func (c *Client) do(req *http.Request) (*http.Response, error) {
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("failed to execute http call: %v", err)
+		return nil, err
 	}
 
 	if c.debug {
