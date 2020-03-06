@@ -1,3 +1,3 @@
-module github.com/Scalify/puppet-master-client-go
+module github.com/scalify/puppet-master-client-go
 
 go 1.14
