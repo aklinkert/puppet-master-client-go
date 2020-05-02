@@ -44,7 +44,9 @@ func dumbHandler(code int, body io.Reader) http.Handler {
 	return http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
 		rw.WriteHeader(code)
 		if body != nil {
-			io.Copy(rw, body)
+			if _, err := io.Copy(rw, body); err != nil {
+				panic(err)
+			}
 		}
 	})
 }
